@@ -3,8 +3,7 @@
 [![Build Status](https://travis-ci.org/dsprenkels/sss-cli.svg?branch=master)](https://travis-ci.org/dsprenkels/sss-cli)
 
 This tool allows for securely splitting and recombining secrets using a secure
-implementation of the Shamir secret sharing scheme. It is a wrapper around my
-[SSS library](https://github.com/dsprenkels/sss).
+implementation of the Shamir secret sharing scheme. It is a wrapper around this [SSS library](https://github.com/dsprenkels/sss).
 
 # Usage
 
@@ -15,11 +14,11 @@ you can install these tools using [Cargo][crates.io]:
 # Install sss-cli
 cargo install --git https://github.com/infa-jowoods/sss-cli --branch v0.1
 
-# Make 4 shares with recombination threshold 3
-echo "Tyler Durden isn't real." | secret-share-split -n 4 -t 3 >shares.txt
+# Make 5 shares with recombination threshold 4
+echo "someSecretString" | secret-share-split -n 5 -t 4 > shares.txt
 
-# Take the first 3 shares and combine them
-head -n 3 shares.txt | secret-share-combine
+# Take the first 4 shares and combine them
+head -n 4 shares.txt | secret-share-combine
 ```
 
 Note that after this installation, you need to add Cargo's installation
