@@ -5,52 +5,6 @@
 This tool allows for securely splitting and recombining secrets using a secure
 implementation of the Shamir secret sharing scheme. It is a wrapper around this [SSS library](https://github.com/dsprenkels/sss).
 
-# Usage
-
-You need [Rust] to build `sss-cli` from source. When you have installed Rust,
-you can install these tools using [Cargo][crates.io]:
-
-```shell
-# Install sss-cli
-cargo install --git https://github.com/infa-jowoods/sss-cli --branch v0.1
-
-# Make 5 shares with recombination threshold 4
-echo "someSecretString" | secret-share-split -n 5 -t 4 > shares.txt
-
-# Take the first 4 shares and combine them
-head -n 4 shares.txt | secret-share-combine
-```
-
-Note that after this installation, you need to add Cargo's installation
-directory to your `$PATH` if you don't have it there yet.
-
-To uninstall the crate you can use a command similar to the install-command
-above.
-
-```shell
-# Uninstall the secret sharing tools
-cargo uninstall shamirsecretsharing-cli
-```
-
-## macOS
-
-To install on macOS system, you can also use [Homebrew](https://brew.sh) package
-manager. The package is not yet in the upstream *homebrew-core*, but there exists a tap
-with **sss-cli** formula [here](https://github.com/vitkabele/homebrew-tap).
-
-To install using Homebrew, run: `brew install vitkabele/tap/sss-cli`.
-
-# F.A.Q.
-
-## Why are the shares so much longer than the secrets?
-
-This Shamir secret sharing library *could* produce shares that are shorter than
-their current length. However, while Shamir secret sharing is secure for
-confidentiality, this is not the case for integrity. An attacker could tamper
-with some of the shares. After restoring the (malicious) secret, you would not
-be able to know that it has been tampered with. `sss-cli` uses an AEAD wrapper
-so that the shares cannot be tampered with, which takes up some extra space.
-
 [Rust]: https://www.rust-lang.org/
 [rustup]: https://rustup.rs/
 [crates.io]: https://crates.io/
