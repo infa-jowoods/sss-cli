@@ -20,6 +20,7 @@ cargo install --git https://github.com/infa-jowoods/sss-cli --branch v0.1;
 echo "Installing symbolic links to Rust binaries...";
 ln -s $HOME/.cargo/bin/secret-share-split /usr/local/bin/sss;
 ln -s $HOME/.cargo/bin/secret-share-combine /usr/local/bin/ssc;
+clear;
 echo "[Installation of Shamir sharding tool completed]\n";
 echo "[Example usage requiring 5 shares, with a reconstruction threshold of 4]:";
 echo "echo \"someSecretString\" | sss -n 5 -t 4 > ./shares.list\n\n";
